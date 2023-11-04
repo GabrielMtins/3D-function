@@ -2,7 +2,7 @@ PKG_NAME:=app
 SRC_DIR:=./src
 
 all:
-	javac -d ./ $(SRC_DIR)/*.java
+	javac -source 1.8 -target 1.8 -d ./ $(SRC_DIR)/*.java
 	jar cvfm $(PKG_NAME).jar manifest.txt $(PKG_NAME)
 
 run:
