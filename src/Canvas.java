@@ -98,7 +98,6 @@ public class Canvas extends JPanel{
 					g2d.drawLine((int) p4.x, (int) p4.y, (int) p3.x, (int) p3.y);
 				}
 				catch(Exception ex){
-					//System.out.println("cu");
 					continue;
 				}
 			}
