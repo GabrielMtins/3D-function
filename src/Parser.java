@@ -140,7 +140,6 @@ public class Parser{
 		}
 		else if(exp.contains("sqrt")){
 			final_res = Math.sqrt(solveExp(exp.substring(4, exp.length())));
-			System.out.println(final_res);
 		}
 		else if(variables_map.containsKey(exp))
 			final_res = variables_map.get(exp);
