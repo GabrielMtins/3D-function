@@ -34,11 +34,16 @@ public class Canvas extends JPanel{
 	}
 
 	/* a wrapper to use the parser module easier */
-	private double f(double x, double y){
+	private double f(double x, double y) throws Exception{
 		parser.setVariable("x", x);
 		parser.setVariable("y", y);
 
-		return parser.solveExp(exp);
+		try{
+			return parser.solveExp(exp);
+		}
+		catch(Exception ex){
+			throw ex;
+		}
 	}
 
 	public void setExp(String exp){
@@ -76,12 +81,12 @@ public class Canvas extends JPanel{
 
 		for(double i = -bound; i < bound; i += delta){
 			for(double j = -bound; j < bound; j += delta){
-				Vec3 p1 = new Vec3(i, j, f(i, j));
-				Vec3 p2 = new Vec3(i + delta, j, f(i + delta, j));
-				Vec3 p3 = new Vec3(i, j + delta, f(i, j + delta));
-				Vec3 p4 = new Vec3(i + delta, j + delta, f(i + delta, j + delta));
-
 				try{
+					Vec3 p1 = new Vec3(i, j, f(i, j));
+					Vec3 p2 = new Vec3(i + delta, j, f(i + delta, j));
+					Vec3 p3 = new Vec3(i, j + delta, f(i, j + delta));
+					Vec3 p4 = new Vec3(i + delta, j + delta, f(i + delta, j + delta));
+					
 					p1 = projection(p1, camera);
 					p2 = projection(p2, camera);
 					p3 = projection(p3, camera);
@@ -93,6 +98,8 @@ public class Canvas extends JPanel{
 					g2d.drawLine((int) p4.x, (int) p4.y, (int) p3.x, (int) p3.y);
 				}
 				catch(Exception ex){
+					//System.out.println("cu");
+					continue;
 				}
 			}
 		}
