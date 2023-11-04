@@ -21,6 +21,7 @@ public class Canvas extends JPanel{
 	public Canvas(){
 		parser = new Parser();
 		bound = 5;
+		setBackground(Color.white);
 
 		internal_width = internal_height = 400;
 		distance_from_origin = 20;
@@ -58,9 +59,6 @@ public class Canvas extends JPanel{
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.setColor(Color.white);
-
-		g.fillRect(0, 0, getWidth(), getHeight());
 
 		Graphics2D g2d = (Graphics2D) g;
 

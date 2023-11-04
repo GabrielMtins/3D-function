@@ -10,6 +10,7 @@ public class App {
 		JFrame frame = new JFrame("3D Function");
 		JScrollBar scroll_x = new JScrollBar(JScrollBar.HORIZONTAL);
 		JScrollBar scroll_y = new JScrollBar(JScrollBar.VERTICAL);
+
 		JScrollBar scroll_distance = new JScrollBar(JScrollBar.VERTICAL);
 
 		JTextField textfield = new JTextField(20);
