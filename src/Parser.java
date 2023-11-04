@@ -16,7 +16,6 @@ public class Parser{
 
 	public double solveExp(String exp) throws Exception{
 		exp = exp.trim();
-		System.out.println(exp);
 
 		/* Check if there is a parenthesis like this (exp) */
 		if(exp.charAt(0) == '('){
@@ -126,27 +125,28 @@ public class Parser{
 		/* check if there is a special function or variable that is on the hashmap */
 		double final_res = 0;
 
-		if(exp.contains("cos")){
+		if(exp.startsWith("cos")){
 			final_res = Math.cos(solveExp(exp.substring(3, exp.length())));
 		}
-		else if(exp.contains("sin")){
+		else if(exp.startsWith("sin")){
 			final_res = Math.sin(solveExp(exp.substring(3, exp.length())));
 		}
-		else if(exp.contains("log")){
+		else if(exp.startsWith("log")){
 			final_res = Math.log(solveExp(exp.substring(3, exp.length())));
 		}
-		else if(exp.contains("abs")){
+		else if(exp.startsWith("abs")){
 			final_res = Math.abs(solveExp(exp.substring(3, exp.length())));
 		}
-		else if(exp.contains("sqrt")){
+		else if(exp.startsWith("sqrt")){
 			final_res = Math.sqrt(solveExp(exp.substring(4, exp.length())));
 		}
-		else if(variables_map.containsKey(exp))
+		else if(variables_map.containsKey(exp)){
 			final_res = variables_map.get(exp);
+		}
 		else{
 			final_res = Double.valueOf(exp);
 		}
-
+		
 		if(Double.isNaN(final_res) || Double.isInfinite(final_res)) throw new Exception();
 		else return final_res;
 	}
